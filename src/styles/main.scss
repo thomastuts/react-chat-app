@@ -1,5 +1,12 @@
-$primary: #aa2941;
+@import "settings/colors";
+@import "settings/layout";
+@import "settings/typography";
 
-.name {
-  color: $primary;
-}
+@import "base/layout";
+@import "base/typography";
+
+@import "components/header";
+@import "components/main";
+@import "components/message-list";
+@import "components/message";
+@import "components/footer";

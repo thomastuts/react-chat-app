@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageList from './message-list';
+import ThreadHeader from './thread-header';
 
 export default class Thread extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class Thread extends React.Component {
   render() {
     return (
       <div className="thread">
-        <h1>Thread</h1>
+        <ThreadHeader participants={this.props.thread.participants} />
         <MessageList messages={this.props.thread.messages} />
       </div>
     );

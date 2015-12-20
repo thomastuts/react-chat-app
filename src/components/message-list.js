@@ -1,21 +1,18 @@
 import React from 'react';
 import Message from './message';
 
-export default class MessageList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const MessageList = ({ messages }) => {
+  const formattedMessages = messages.map((message, index) => <Message key={index} {...message} />);
 
-  render() {
-    const messages = this.props.messages.map((message, index) => <Message key={index} {...message} />);
-    return (
-      <div className="message-list">
-        {messages}
-      </div>
-    );
-  }
-}
+  return (
+    <main className="message-list">
+      {formattedMessages}
+    </main>
+  );
+};
 
 MessageList.propTypes = {
   messages: React.PropTypes.array.isRequired,
 };
+
+export default MessageList;

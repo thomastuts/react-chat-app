@@ -5,6 +5,14 @@ html {
   height: 100%;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   display: flex;
   align-items: center;
@@ -14,5 +22,4 @@ body {
 #root {
   width: 100%;
   max-width: 400px;
-  border: 1px solid red;
 }

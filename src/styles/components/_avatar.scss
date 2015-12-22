@@ -1,0 +1,20 @@
+$avatar-dimensions: 50px;
+
+.avatar {
+  width: $avatar-dimensions;
+  height: $avatar-dimensions;
+  line-height: $avatar-dimensions;
+  text-align: center;
+  border-radius: 50%;
+  text-transform: uppercase;
+}
+
+.avatar--self {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.avatar--other {
+  color: #fff;
+  background-color: $color-primary;
+}

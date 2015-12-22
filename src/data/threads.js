@@ -6,14 +6,54 @@ const threads = [
     participants: [
       contacts[2],
     ],
-    messages: [
+    conversation: [
       {
-        sender: 'self',
-        content: 'Hey, feel like hanging out at the mall today?',
+        sender: {
+          id: 'self',
+        },
+        messages: [
+          {
+            content: 'Hey, feel like going to the mall today?',
+            date: +Date.now(),
+          },
+          {
+            content: 'Got the day off',
+            date: +Date.now(),
+          },
+        ],
       },
       {
-        sender: 'participant',
-        content: 'Yeah, meet you there.',
+        sender: contacts[2],
+        messages: [
+          {
+            content: 'Sure, where do you want to hang out?',
+            date: +Date.now(),
+          },
+        ],
+      },
+      {
+        sender: {
+          id: 'self',
+        },
+        messages: [
+          {
+            content: 'How about we meet up at the hot-dog stand at 3:30?',
+            date: +Date.now(),
+          },
+        ],
+      },
+      {
+        sender: contacts[2],
+        messages: [
+          {
+            content: 'Works for me',
+            date: +Date.now(),
+          },
+          {
+            content: 'Actually, make it 4. I have to pick up my sister first',
+            date: +Date.now(),
+          },
+        ],
       },
     ],
   },
@@ -41,7 +81,9 @@ export function sendMessageToThread({ threadId, message }) {
     throw new Error('Thread does not exist');
   } else {
     thread.messages.push({
-      sender: 'self',
+      sender: {
+        id: 'self',
+      },
       content: message,
     });
   }

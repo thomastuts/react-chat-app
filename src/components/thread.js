@@ -1,5 +1,5 @@
 import React from 'react';
-import MessageList from './message-list';
+import Conversation from './conversation';
 import ThreadHeader from './thread-header';
 
 export default class Thread extends React.Component {
@@ -8,15 +8,17 @@ export default class Thread extends React.Component {
   }
 
   render() {
+    const { thread } = this.props;
+
     return (
       <div className="thread">
-        <ThreadHeader participants={this.props.thread.participants} />
-        <MessageList messages={this.props.thread.messages} />
+        <ThreadHeader participants={thread.participants} />
+        <Conversation conversation={thread.conversation} />
       </div>
     );
   }
 }
 
 Thread.propTypes = {
-  thread: React.PropTypes.object.isRequired
+  thread: React.PropTypes.object.isRequired,
 };

@@ -1,10 +1,15 @@
 import React from 'react';
 import Conversation from './conversation';
 import ThreadHeader from './thread-header';
+import MessageInput from './message-input';
 
 export default class Thread extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  handleSendMessage(messageContent) {
+    console.log('Sending message:', messageContent);
   }
 
   render() {
@@ -14,6 +19,7 @@ export default class Thread extends React.Component {
       <div className="thread">
         <ThreadHeader participants={thread.participants} />
         <Conversation conversation={thread.conversation} />
+        <MessageInput onSendMessage={this.handleSendMessage.bind(this)} />
       </div>
     );
   }

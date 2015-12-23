@@ -10,7 +10,7 @@ export default class Thread extends React.Component {
     super(props);
 
     this.state = {
-      thread: getThread(props.threadId),
+      thread: getThread(props.params.threadId),
     };
   }
 
@@ -43,5 +43,5 @@ export default class Thread extends React.Component {
 }
 
 Thread.propTypes = {
-  threadId: React.PropTypes.number.isRequired,
+  //threadId: React.PropTypes.number.isRequired,
 };

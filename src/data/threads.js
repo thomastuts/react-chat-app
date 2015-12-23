@@ -62,7 +62,7 @@ const threads = [
   {
     id: 1,
     participants: [
-      contacts[4],
+      contacts[9],
     ],
     conversation: [
       {

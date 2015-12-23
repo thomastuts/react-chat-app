@@ -5,9 +5,15 @@ const Avatar = ({ contact }) => {
   const isSelf = contact.id === 'self';
   const initial = isSelf ? 'T' : contact.name.charAt(0);
 
-  return (
-    <div className={classNames('avatar', { 'avatar--self': isSelf, 'avatar--other': !isSelf })}>{initial}</div>
-  );
+  if (isSelf) {
+    return (
+      <div className="avatar avatar--self">{initial}</div>
+    );
+  } else {
+    return (
+      <div className="avatar avatar--self" style={{backgroundImage: `url(${contact.picture})`}}></div>
+    );
+  }
 };
 
 Avatar.propTypes = {

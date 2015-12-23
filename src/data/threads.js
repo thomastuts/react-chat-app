@@ -74,17 +74,27 @@ export function createNewThread({ participantIds }) {
   });
 }
 
-export function sendMessageToThread({ threadId, message }) {
+export function sendMessageToThread({ threadId, content }) {
   const thread = getThread(threadId);
 
   if (!thread) {
     throw new Error('Thread does not exist');
   } else {
-    thread.messages.push({
-      sender: {
-        id: 'self',
-      },
-      content: message,
-    });
+    const lastMessageBlock = thread.conversation[thread.conversation.length - 1];
+    const message = {
+      content,
+      date: +Date.now(),
+    };
+
+    if (lastMessageBlock.id === 'self') {
+      lastMessageBlock.messages.push(message);
+    } else {
+      thread.conversation.push({
+        sender: {
+          id: 'self',
+        },
+        messages: [message],
+      });
+    }
   }
 }

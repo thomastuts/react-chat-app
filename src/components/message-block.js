@@ -2,17 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 
 import Avatar from './avatar';
+import Message from './message';
 
 const MessageBlock = ({ sender, messages }) => {
   const messagesFromSender = messages.map((message, index) => {
-    const timestamp = <time>Sat 19:16</time>;
-
-    return (
-      <div className="message-block__message" key={index}>
-        <div className="message-block__message__content">{message.content}</div>
-        {timestamp}
-      </div>
-    );
+    const timestamp = 'Sat 19:16';
+    return <Message content={message.content} timestamp={timestamp} key={index} />;
   });
 
   const isFromSelf = sender.id === 'self';

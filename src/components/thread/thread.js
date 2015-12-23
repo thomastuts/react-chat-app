@@ -15,11 +15,15 @@ export default class Thread extends React.Component {
   }
 
   componentDidMount() {
-    subscribe(() => {
+    this.listener = subscribe(() => {
       this.setState({
         thread: getThread(+this.props.params.threadId),
       });
     });
+  }
+
+  componentWillUnmount() {
+    this.listener();
   }
 
   handleSendMessage(content) {

@@ -59,6 +59,25 @@ const threads = [
       },
     ],
   },
+  {
+    id: 1,
+    participants: [
+      contacts[4],
+    ],
+    conversation: [
+      {
+        sender: {
+          id: 'self',
+        },
+        messages: [
+          {
+            content: 'See you tomorrow',
+            date: +Date.now(),
+          },
+        ],
+      },
+    ],
+  }
 ];
 
 function emitChange() {

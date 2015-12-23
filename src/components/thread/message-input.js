@@ -18,7 +18,7 @@ export default class MessageInput extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="message-input">
-        <input type="text" ref="message" />
+        <input type="text" ref="message" placeholder="Send message" />
       </form>
     );
   }

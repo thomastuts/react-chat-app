@@ -10,21 +10,21 @@ export default class Thread extends React.Component {
     super(props);
 
     this.state = {
-      thread: getThread(props.params.threadId),
+      thread: getThread(+props.params.threadId),
     };
   }
 
   componentDidMount() {
     subscribe(() => {
       this.setState({
-        thread: getThread(this.props.threadId),
+        thread: getThread(+this.props.params.threadId),
       });
     });
   }
 
   handleSendMessage(content) {
     sendMessageToThread({
-      threadId: this.props.threadId,
+      threadId: +this.props.params.threadId,
       content,
     });
   }
@@ -33,7 +33,7 @@ export default class Thread extends React.Component {
     const { thread } = this.state;
 
     return (
-      <div className="thread">
+      <div className="container">
         <ThreadHeader participants={thread.participants} />
         <Conversation conversation={thread.conversation} />
         <MessageInput onSendMessage={this.handleSendMessage.bind(this)} />

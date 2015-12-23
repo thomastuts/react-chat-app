@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ThreadHeader = ({ participants }) => {
-  const participantsList = participants.map(p => p.name);
+  const participantsList = participants.map(p => p.name).join(', ');
 
   return (
     <header>

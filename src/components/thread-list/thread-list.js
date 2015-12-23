@@ -16,8 +16,11 @@ export default class ThreadList extends React.Component {
     const threads = this.state.threads.map(thread => <ThreadPreview thread={thread} key={thread.id} />);
 
     return (
-      <div className="thread-list">
-        {threads}
+      <div className="container">
+        <header>Messages</header>
+        <main className="thread-list collapsed">
+          {threads}
+        </main>
       </div>
     );
   }

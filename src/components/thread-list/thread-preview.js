@@ -13,7 +13,7 @@ const ThreadPreview = ({ thread }) => {
     <Link to={threadUrl} params={{ threadId: thread.id }} className="thread-preview">
       <Avatar contact={thread.participants[0]} />
       <div className="thread-preview__last-message">
-        <p><strong>{isLastMessageBySelf ? 'You' : lastMessageBlock.sender.name}: </strong>{lastMessage.content}</p>
+        <div className="thread-preview__last-message__content"><strong>{isLastMessageBySelf ? 'You' : lastMessageBlock.sender.name}: </strong>{lastMessage.content}</div>
         <time>Sat 19:16</time>
       </div>
     </Link>

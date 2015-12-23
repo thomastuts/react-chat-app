@@ -1,0 +1,11 @@
+main {
+  padding: 20px;
+  background-color: $color-gallery;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex: 1;
+
+  &.collapsed {
+    padding: 0;
+  }
+}

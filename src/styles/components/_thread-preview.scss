@@ -1,0 +1,16 @@
+.thread-preview {
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 1px;
+
+  .avatar {
+    margin-right: 10px;
+  }
+}
+
+.thread-preview__last-message {
+  flex: 1;
+}

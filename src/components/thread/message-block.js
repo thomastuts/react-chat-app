@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import Avatar from './avatar';
+import Avatar from './../common/avatar';
 import Message from './message';
 
 const MessageBlock = ({ sender, messages }) => {
@@ -14,7 +14,7 @@ const MessageBlock = ({ sender, messages }) => {
 
   return (
     <div className={classNames('message-block', { 'message-block--self': isFromSelf, 'message-block--other': !isFromSelf })}>
-      <Avatar sender={sender} />
+      <Avatar contact={sender} />
       <div className="message-block__messages">{messagesFromSender}</div>
     </div>
   );

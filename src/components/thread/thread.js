@@ -3,7 +3,7 @@ import Conversation from './conversation';
 import ThreadHeader from './thread-header';
 import MessageInput from './message-input';
 
-import { getThread, sendMessageToThread, subscribe } from '../data/threads';
+import { getThread, sendMessageToThread, subscribe } from '../../data/threads';
 
 export default class Thread extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Thread from './components/thread';
+import Thread from './components/thread/thread';
 
 ReactDOM.render(
   <Thread threadId={0} />,

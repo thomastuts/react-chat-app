@@ -25,5 +25,5 @@ export default class MessageInput extends React.Component {
 }
 
 MessageInput.propTypes = {
-  onSendMessage: React.PropTypes.func.isRequired
+  onSendMessage: React.PropTypes.func.isRequired,
 };

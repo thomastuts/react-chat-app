@@ -1,5 +1,7 @@
 import contacts from './contacts';
 
+const listeners = [];
+
 const threads = [
   {
     id: 0,
@@ -59,6 +61,25 @@ const threads = [
   },
 ];
 
+function emitChange() {
+  listeners.forEach(listener => listener());
+}
+
+export function subscribe(listener) {
+  listeners.push(listener);
+  let isSubscribed = true;
+
+  return function unsubscribe() {
+    if (!isSubscribed) {
+      return;
+    }
+
+    isSubscribed = false;
+    const index = listeners.indexOf(listener);
+    listeners.splice(index, 1);
+  };
+}
+
 export function getThreads() {
   return threads;
 }
@@ -72,6 +93,8 @@ export function createNewThread({ participantIds }) {
     participants: participantIds.map(id => contacts[id]),
     messages: [],
   });
+
+  emitChange();
 }
 
 export function sendMessageToThread({ threadId, content }) {
@@ -81,12 +104,14 @@ export function sendMessageToThread({ threadId, content }) {
     throw new Error('Thread does not exist');
   } else {
     const lastMessageBlock = thread.conversation[thread.conversation.length - 1];
+    const isLastMessageBlockBySelf = lastMessageBlock.sender.id === 'self';
     const message = {
       content,
       date: +Date.now(),
     };
 
-    if (lastMessageBlock.id === 'self') {
+
+    if (isLastMessageBlockBySelf) {
       lastMessageBlock.messages.push(message);
     } else {
       thread.conversation.push({
@@ -96,5 +121,7 @@ export function sendMessageToThread({ threadId, content }) {
         messages: [message],
       });
     }
+
+    emitChange();
   }
 }

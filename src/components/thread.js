@@ -3,17 +3,34 @@ import Conversation from './conversation';
 import ThreadHeader from './thread-header';
 import MessageInput from './message-input';
 
+import { getThread, sendMessageToThread, subscribe } from '../data/threads';
+
 export default class Thread extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      thread: getThread(props.threadId),
+    };
   }
 
-  handleSendMessage(messageContent) {
-    console.log('Sending message:', messageContent);
+  componentDidMount() {
+    subscribe(() => {
+      this.setState({
+        thread: getThread(this.props.threadId),
+      });
+    });
+  }
+
+  handleSendMessage(content) {
+    sendMessageToThread({
+      threadId: this.props.threadId,
+      content,
+    });
   }
 
   render() {
-    const { thread } = this.props;
+    const { thread } = this.state;
 
     return (
       <div className="thread">
@@ -26,5 +43,5 @@ export default class Thread extends React.Component {
 }
 
 Thread.propTypes = {
-  thread: React.PropTypes.object.isRequired,
+  threadId: React.PropTypes.number.isRequired,
 };
